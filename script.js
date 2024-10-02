@@ -183,11 +183,26 @@ const equal = document.querySelector('.equal');
 
 
 equal.addEventListener('click', () => {
-    secondNumber = +display.textContent;
     
+    if(display.textContent == operator){
+        display.textContent = operator
+
+    } else if(operator == undefined) {
+            display.textContent = display.textContent
+    } else {
+        a = display.textContent;
+        if(a == '+' || a == '-' || a == '*' || a == '/' || a == '%') {
+
+        } else {
+
+    secondNumber = +display.textContent;
 
 
     display.textContent = operate(firstNumber, operator, secondNumber);
+        }
+
+
+    }
 
 })
 

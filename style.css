@@ -3,25 +3,33 @@
 }
 
 .container {
-    margin: auto;
-    height: 550px;
-    width: 400px;
+    margin: 0 auto;
+    height: 510px;
+    width: 410px;
     background-color: gray;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-end;
+    border: 5px solid darkgray;
 }
+
 
 button {
-    height: 100px;
+    height: 78px;
     width: 100px;
     font-size: 30px;
+} 
+ 
+.zero {
+    width: 200px;
 }
 
+
+/* 
 .equal {
     width: 200px;   
  
-}
+} */
 
 
 .screen {
@@ -52,3 +60,9 @@ button {
 
 
 /* create a 4 x 5 grid */ 
+
+
+.dec:disabled {
+    background-color: lightgray;
+
+}

@@ -1,19 +1,53 @@
 // basic mathematical functions
 function add(a,b) {
-    return a + b;
+    if(Number(a+b) === (a+b) && (a+b) % 1) {
+    return (a + b).toFixed(2);
+    } else {
+        return a + b;
+    }
 };
 
 function subtract(a,b) {
-     return a - b;
+    if(Number(a-b) === (a-b) && (a-b) % 1) {
+        return (a - b).toFixed(2);
+        } else {
+            return a - b;
+        }
+
 };
 
 function multiply(a,b) {
-    return a * b;
+    if(Number(a*b) === (a*b) && (a*b) % 1) {
+        return (a * b).toFixed(2);
+        } else {
+            return a * b;
+        }
 };
 
+
+
 function divide(a,b) {
-    return a / b;
+    if(b == 0){
+        alert('Cant do that');
+        return display.textContent = firstNumber;
+
+
+    } else if(Number(a/b) === (a/b) && (a/b) % 1) {
+        return (a / b).toFixed(2);
+        } else {
+            return a / b;
+        }
+    
 };
+
+function modulo(a,b) {
+    if(Number(a%b) === (a%b) && (a%b) % 1) {
+        return (a % b).toFixed(2);
+        } else {
+            return a % b;
+        }
+
+}
 
 
 // create variables for calc operation numbers ex. 3 + 5
@@ -34,6 +68,8 @@ function operate(a, b, c) {
        return multiply(a,c);
     } else if(b == '/') {
         return divide(a,c);
+    } else if(b == '%') {
+        return modulo(a,c)
     }
 };
 
@@ -51,23 +87,27 @@ const btn = document.querySelectorAll('.btn');
 
 const char = document.querySelectorAll('.char')
 
+const display = document.querySelector('.screen');
 
 
 const num = document.querySelectorAll('.num');
-const display = document.querySelector('.screen');
 
 
 num.forEach(button => {
 
 
     button.addEventListener('click', () => {
-
+        if(display.textContent == '0') {
+            display.textContent = '';
+        }
 
         let a = display.textContent;
 
 
 
-        if (display.textContent == '*' || a =='/' || a =='+' || a == '-') {
+       
+
+        if (display.textContent == '*' || a =='/' || a =='+' || a == '-' ||  a == '%') {
 
             display.textContent = button.textContent;
         } else {
@@ -84,6 +124,12 @@ num.forEach(button => {
 
     });
 });
+
+const acButton = document.querySelector('.ac');
+
+acButton.addEventListener('click', () => {
+    display.textContent = '0';
+})
 
 
 
@@ -110,12 +156,13 @@ num.forEach(button => {
 
 
 
-display.textContent = '0';
+display.textContent = 0;
 
 
 char.forEach(button => {
     button.addEventListener('click', () => {
         firstNumber = +display.textContent;
+
 
     });
 });
@@ -135,14 +182,25 @@ char.forEach(button => {
 const equal = document.querySelector('.equal');
 
 
-
 equal.addEventListener('click', () => {
     secondNumber = +display.textContent;
+    
+
+
     display.textContent = operate(firstNumber, operator, secondNumber);
 
 })
 
 
+const dec = document.querySelector('.dec');
+
+dec.addEventListener('click', () => {
+    if(display.textContent.includes('.')) {
+        dec.disabled = true;
+
+
+    }
+})
 
 
 

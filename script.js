@@ -131,6 +131,19 @@ acButton.addEventListener('click', () => {
     display.textContent = '0';
 })
 
+const plusMinusButton = document.querySelector('.toggleNegPosNum');
+
+
+
+
+plusMinusButton.addEventListener('click', () => {
+    display.textContent = -display.textContent
+
+
+    
+
+})
+
 
 
 

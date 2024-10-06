@@ -101,13 +101,14 @@ num.forEach(button => {
             display.textContent = '';
         }
 
-        let a = display.textContent;
+
 
 
 
        
+        let a = display.textContent;
 
-        if (display.textContent == '*' || a =='/' || a =='+' || a == '-' ||  a == '%') {
+        if (a == '*' || a =='/' || a =='+' || a == '-' ||  a == '%') {
 
             display.textContent = button.textContent;
         } else {
@@ -125,9 +126,23 @@ num.forEach(button => {
     });
 });
 
+// document.addEventListener('keydown',(event) => {
+//     console.log(event.key);
+
+// } )
+
+
+
+
+
+    
+
+
 const acButton = document.querySelector('.ac');
 
 acButton.addEventListener('click', () => {
+    dec.disabled = false;
+
     display.textContent = '0';
 })
 
@@ -180,6 +195,15 @@ char.forEach(button => {
     });
 });
 
+const dec = document.querySelector('.dec');
+
+
+char.forEach(button => {
+    button.addEventListener('click', () => {
+        dec.disabled = false;
+    })
+})
+
 
 
 
@@ -220,15 +244,187 @@ equal.addEventListener('click', () => {
 })
 
 
-const dec = document.querySelector('.dec');
+
+
+document.addEventListener('keydown', (event) => {
+    parent = document.querySelector('.container');
+    children = parent.children;
+
+
+
+    if(display.textContent == '0') {
+        display.textContent = '';
+    } 
+
+    let a = display.textContent;
+
+    if (a == '*' || a =='/' || a =='+' || a == '-' ||  a == '%') {
+        dec.disabled = false;
+        
+        display.textContent = children.textContent;
+    }
+
+  
+
+
+    if(event.key == 1){
+        display.textContent = display.textContent + children[13].textContent;
+    } else if(event.key == 2){
+        display.textContent = display.textContent + children[14].textContent;
+
+    } else if(event.key == 3){
+        display.textContent = display.textContent + children[15].textContent;
+    } else if(event.key == '+') {
+        firstNumber = +display.textContent;
+
+        display.textContent = children[16].textContent;
+        operator = display.textContent;
+
+
+    } else if (event.key == 0){
+        display.textContent = display.textContent + children[17].textContent;
+    } else if (event.key == '.'){
+        if(display.textContent.includes('.')) {
+            dec.disabled = true;
+        }
+        if(dec.disabled == true){
+
+        } else {
+        display.textContent = display.textContent + children[18].textContent;
+
+        }
+    } else if (event.key == 4){
+        display.textContent = display.textContent + children[9].textContent;
+
+    } else if (event.key == 5){
+        display.textContent = display.textContent + children[10].textContent;
+
+    } else if (event.key == 6){
+        display.textContent = display.textContent + children[11].textContent;
+
+    } else if (event.key == '-'){
+        firstNumber = +display.textContent;
+
+        display.textContent = children[12].textContent;
+        operator = display.textContent;
+
+    } else if(event.key == 7){
+        display.textContent = display.textContent + children[5].textContent;
+
+    } else if(event.key == 8){
+        display.textContent = display.textContent + children[6].textContent;
+
+    } else if(event.key == 9){
+        display.textContent = display.textContent + children[7].textContent;
+
+    } else if(event.key == '*'){
+        firstNumber = +display.textContent;
+
+        display.textContent = children[8].textContent;
+        operator = display.textContent;
+
+    } else if(event.key == '%'){
+        firstNumber = +display.textContent;
+
+        display.textContent = children[3].textContent;
+        operator = display.textContent;
+
+    } else if(event.key == '/'){
+        firstNumber = +display.textContent;
+
+        display.textContent = children[4].textContent;
+        operator = display.textContent;
+    } else if(event.key == 'Escape') {
+        dec.disabled = false;
+
+        display.textContent = '0';
+    }
+
+
+
+
+});
+
+document.addEventListener('keydown', (event) => {
+    if(event.key == 'Backspace') {
+        a = display.textContent.length;
+        display.textContent = display.textContent.slice(0, -1)
+    }
+})
+
+
+
+
+
+document.addEventListener('keydown', (event) => {
+    if(event.key == 'Enter'){
+        if(display.textContent == operator){
+            display.textContent = operator
+    
+        } else if(operator == undefined) {
+                display.textContent = display.textContent
+        } else {
+            a = display.textContent;
+            if(a == '+' || a == '-' || a == '*' || a == '/' || a == '%') {
+    
+            } else {
+    
+        secondNumber = +display.textContent;
+    
+    
+        display.textContent = operate(firstNumber, operator, secondNumber);
+            }
+    
+    
+        }
+
+    }
+      
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 dec.addEventListener('click', () => {
     if(display.textContent.includes('.')) {
         dec.disabled = true;
-
-
-    }
+    } 
 })
+
+if(firstNumber !== undefined){
+    dec.disabled = false;
+}
+
+
+console.log(firstNumber);
+
+
+
 
 
 
